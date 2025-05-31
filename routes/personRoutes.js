@@ -44,7 +44,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/:workType", async (req, res) => { 
+router.get("/:workType", async (req, res) => {
   try {
     const workType = req.params.workType; // Extract the work type from the request parameters
 
@@ -60,6 +60,8 @@ router.get("/:workType", async (req, res) => {
     res.status(500).json({ error: "Failed to fetch persons by work type" });
   }
 });
+
+//comment added to test
 
 router.put("/:id", async (req, res) => {
   try {
@@ -90,22 +92,21 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-router.delete("/:id",async (req,res)=>{
-    try{
-        const personId = req.params.id;
-        const response = await Person.findByIdAndDelete(personId)
+router.delete("/:id", async (req, res) => {
+  try {
+    const personId = req.params.id;
+    const response = await Person.findByIdAndDelete(personId);
 
-        if(!response){
-            return res.status(404).json({error:"Person not found"}); // Respond with an error if the person is not found
-        }
+    if (!response) {
+      return res.status(404).json({ error: "Person not found" }); // Respond with an error if the person is not found
+    }
 
-        console.log("Person deleted:", response);
-        res.status(200).json({message:"Person deleted successfully"}); // Respond with a success message
-    }
-    catch(error){
-        console.error("Error deleting person:", error);
-        res.status(500).json({ error: "Failed to delete person" });
-    }
-})
+    console.log("Person deleted:", response);
+    res.status(200).json({ message: "Person deleted successfully" }); // Respond with a success message
+  } catch (error) {
+    console.error("Error deleting person:", error);
+    res.status(500).json({ error: "Failed to delete person" });
+  }
+});
 
 module.exports = router;
