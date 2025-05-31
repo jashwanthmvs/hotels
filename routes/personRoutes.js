@@ -44,7 +44,9 @@ router.get("/", async (req, res) => {
   }
 });
 
-router.get("/:workType", async (req, res) => {
+// comment added
+
+router.get("/:workType", async (req, res) => { // Fetch persons by work type
   try {
     const workType = req.params.workType; // Extract the work type from the request parameters
 
@@ -98,7 +100,7 @@ router.delete("/:id",async (req,res)=>{
         if(!response){
             return res.status(404).json({error:"Person not found"}); // Respond with an error if the person is not found
         }
-        
+
         console.log("Person deleted:", response);
         res.status(200).json({message:"Person deleted successfully"}); // Respond with a success message
     }
