@@ -44,9 +44,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// comment added
-
-router.get("/:workType", async (req, res) => { // Fetch persons by work type
+router.get("/:workType", async (req, res) => { 
   try {
     const workType = req.params.workType; // Extract the work type from the request parameters
 
